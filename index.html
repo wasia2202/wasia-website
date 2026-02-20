@@ -51,6 +51,16 @@
             margin-bottom: 20px;
             border: 3px solid cyan;
         }
+        .project-card {
+            background-color: #222;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+    .project-card:hover {
+        transform: scale(1.05);
+    }
         @keyframes fadeUp {
             to {
                 opacity: 1;
@@ -84,10 +94,18 @@
 
     <section id="tujuan">
         <h2>Tujuan Saya</h2>
+        <section id="project">
+            <h2>project saya</h2>
+            <div class="project-card">
+                <h3>website pertama saya</h3>
+                <p>website portofolio yang saya buat sendiri dari nol menggunakan HTML, CSS, dan JavaScript.<p>
+            </div>
+        </section>
         <p>Menjadi developer yang berguna dan sukses.</p>
     </section>
 
 </body>
 </html>
+
 
 
