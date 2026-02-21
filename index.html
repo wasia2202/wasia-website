@@ -4,112 +4,82 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pramesthi Tour & Travel</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#f4f7fb;color:#333;}
-html{scroll-behavior:smooth}
-
-/* NAVBAR */
 nav{
-position:fixed;
-width:100%;
-top:0;
-background:white;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 8%;
-box-shadow:0 2px 15px rgba(0,0,0,0.05);
+position:fixed;width:100%;top:0;background:white;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 8%;box-shadow:0 2px 15px rgba(0,0,0,0.05);
 z-index:1000;
 }
+.logo{font-weight:700;font-size:1.3rem;color:#0066ff;}
+nav ul{display:flex;gap:30px;list-style:none;}
+nav a{text-decoration:none;color:#333;cursor:pointer;}
 
-.logo{
-font-weight:700;
-font-size:1.3rem;
-color:#0066ff;
-}
-
-nav ul{
-display:flex;
-gap:30px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
-color:#333;
-font-weight:500;
-cursor:pointer;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#0066ff;
-}
-
-/* PAGE SYSTEM */
 .page{
-display:none;
-padding:120px 8% 80px 8%;
-min-height:100vh;
-animation:fade 0.6s ease;
+display:none;padding:120px 8% 80px 8%;min-height:100vh;
+animation:fade 0.5s ease;
 }
-
-.page.active{
-display:block;
-}
-
+.page.active{display:block;}
 @keyframes fade{
 from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-/* CARD */
-.card-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.card{
+/* BOOKING STYLE */
+.package-box{
 background:white;
 border-radius:15px;
-overflow:hidden;
+padding:25px;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
-transition:0.4s;
+max-width:700px;
+margin:40px auto;
 }
 
-.card:hover{
-transform:translateY(-10px);
-}
-
-.card img{
+.package-box img{
 width:100%;
-height:200px;
+border-radius:12px;
+margin-bottom:20px;
+height:250px;
 object-fit:cover;
 }
 
-.card-content{
-padding:20px;
+.form-group{
+margin-bottom:15px;
 }
 
-.price{
-color:#0066ff;
+label{
+font-weight:600;
+display:block;
+margin-bottom:5px;
+}
+
+input, select{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.total{
+font-size:1.2rem;
 font-weight:700;
-margin-top:10px;
+color:#0066ff;
+margin-top:15px;
 }
 
-/* CONTACT */
-.contact-box{
-text-align:center;
-margin-top:30px;
-}
-
-.contact-box p{
-margin:10px 0;
+button{
+background:#0066ff;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
 }
 
 </style>
@@ -121,7 +91,6 @@ margin:10px 0;
 <div class="logo">Pramesthi Tour & Travel</div>
 <ul>
 <li><a onclick="showPage('tentang')">Tentang</a></li>
-<li><a onclick="showPage('destinasi')">Destinasi</a></li>
 <li><a onclick="showPage('paket')">Paket Wisata</a></li>
 <li><a onclick="showPage('kontak')">Kontak</a></li>
 </ul>
@@ -129,94 +98,43 @@ margin:10px 0;
 
 <!-- TENTANG -->
 <section id="tentang" class="page active">
-<h1>Tentang Pramesthi Tour & Travel</h1>
+<h1>Tentang Kami</h1>
 <p style="margin-top:20px;max-width:700px;">
-Pramesthi Tour & Travel adalah perusahaan jasa perjalanan profesional yang menyediakan paket wisata domestik dan internasional dengan pelayanan terbaik, harga kompetitif, dan pengalaman tak terlupakan.
+Pramesthi Tour & Travel menyediakan paket wisata terbaik dengan sistem booking profesional seperti travel besar.
 </p>
-</section>
-
-<!-- DESTINASI -->
-<section id="destinasi" class="page">
-<h1>Destinasi Populer</h1>
-
-<div class="card-container">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1555212697-194d092e3b8f">
-<div class="card-content">
-<h3>Bandung - Kawah Putih</h3>
-<p>Jawa Barat</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1549887534-1541e9326642">
-<div class="card-content">
-<h3>Jakarta - Monas</h3>
-<p>DKI Jakarta</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1526481280691-3c6e3d2f2f8e">
-<div class="card-content">
-<h3>Tokyo - Jepang</h3>
-<p>Shibuya & Sakura</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1505731132164-ccaad6e68f6f">
-<div class="card-content">
-<h3>Yogyakarta - Malioboro</h3>
-<p>DI Yogyakarta</p>
-</div>
-</div>
-
-</div>
 </section>
 
 <!-- PAKET -->
 <section id="paket" class="page">
-<h1>Paket Wisata</h1>
+<h1>Paket Bandung 3H2M</h1>
 
-<div class="card-container">
+<div class="package-box">
 
-<div class="card">
 <img src="https://images.unsplash.com/photo-1555212697-194d092e3b8f">
-<div class="card-content">
-<h3>Paket Bandung 3H2M</h3>
-<p>Hotel + Transport + Tiket Wisata</p>
-<p class="price">Rp 1.500.000</p>
-</div>
+
+<div class="form-group">
+<label>Tanggal Keberangkatan</label>
+<input type="date">
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1505731132164-ccaad6e68f6f">
-<div class="card-content">
-<h3>Paket Jogja 2H1M</h3>
-<p>Hotel + Lava Tour + Malioboro</p>
-<p class="price">Rp 1.200.000</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1518684079-3c830dcef090">
-<div class="card-content">
-<h3>Paket Bali Premium</h3>
-<p>Resort + Island Tour</p>
-<p class="price">Rp 3.500.000</p>
-</div>
+<div class="form-group">
+<label>Durasi</label>
+<select id="durasi">
+<option value="1500000">3 Hari 2 Malam</option>
+<option value="1000000">2 Hari 1 Malam</option>
+</select>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1526481280691-3c6e3d2f2f8e">
-<div class="card-content">
-<h3>Tokyo Sakura Trip 5H4M</h3>
-<p>Hotel + Guide + Mt Fuji Tour</p>
-<p class="price">Rp 8.500.000</p>
+<div class="form-group">
+<label>Jumlah Peserta (Dewasa)</label>
+<input type="number" id="peserta" value="1" min="1">
 </div>
+
+<div class="total">
+Total Harga: Rp <span id="totalHarga">1500000</span>
 </div>
+
+<button onclick="hitungTotal()">Pesan Sekarang</button>
 
 </div>
 </section>
@@ -224,13 +142,8 @@ Pramesthi Tour & Travel adalah perusahaan jasa perjalanan profesional yang menye
 <!-- KONTAK -->
 <section id="kontak" class="page">
 <h1>Hubungi Kami</h1>
-
-<div class="contact-box">
 <p>Email: pramesthitour@gmail.com</p>
-<p>Instagram: @pramesthitour</p>
-<p>Facebook: Pramesthi Tour & Travel</p>
 <p>WhatsApp: 081234567890</p>
-</div>
 </section>
 
 <script>
@@ -240,6 +153,13 @@ page.classList.remove('active');
 });
 document.getElementById(pageId).classList.add('active');
 window.scrollTo(0,0);
+}
+
+function hitungTotal(){
+let harga = parseInt(document.getElementById("durasi").value);
+let peserta = parseInt(document.getElementById("peserta").value);
+let total = harga * peserta;
+document.getElementById("totalHarga").innerText = total.toLocaleString();
 }
 </script>
 
