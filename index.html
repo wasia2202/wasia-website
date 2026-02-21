@@ -7,36 +7,97 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#f4f7fb;color:#333;}
+:root{
+--primary:#0066ff;
+--bg:#f4f7fb;
+--card:#ffffff;
+--text:#333;
+}
+
+body.dark{
+--bg:#121212;
+--card:#1e1e1e;
+--text:#f1f1f1;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+transition:0.3s;
+}
+
 nav{
-position:fixed;width:100%;top:0;background:white;
-display:flex;justify-content:space-between;align-items:center;
-padding:15px 8%;box-shadow:0 2px 15px rgba(0,0,0,0.05);
+position:fixed;
+width:100%;
+top:0;
+background:var(--card);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+box-shadow:0 2px 15px rgba(0,0,0,0.05);
 z-index:1000;
 }
-.logo{font-weight:700;font-size:1.3rem;color:#0066ff;}
-nav ul{display:flex;gap:30px;list-style:none;}
-nav a{text-decoration:none;color:#333;cursor:pointer;}
+
+.logo{
+font-weight:700;
+font-size:1.3rem;
+color:var(--primary);
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:var(--text);
+cursor:pointer;
+font-weight:500;
+}
+
+.toggle{
+cursor:pointer;
+background:var(--primary);
+color:white;
+padding:6px 12px;
+border-radius:20px;
+font-size:0.8rem;
+}
 
 .page{
-display:none;padding:120px 8% 80px 8%;min-height:100vh;
-animation:fade 0.5s ease;
+display:none;
+padding:120px 8% 80px 8%;
+min-height:100vh;
+animation:fade 0.4s ease;
 }
-.page.active{display:block;}
+
+.page.active{
+display:block;
+}
+
 @keyframes fade{
-from{opacity:0;transform:translateY(20px);}
+from{opacity:0;transform:translateY(15px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-/* BOOKING STYLE */
 .package-box{
-background:white;
+background:var(--card);
 border-radius:15px;
 padding:25px;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
 max-width:700px;
 margin:40px auto;
+transition:0.3s;
 }
 
 .package-box img{
@@ -67,12 +128,12 @@ border:1px solid #ccc;
 .total{
 font-size:1.2rem;
 font-weight:700;
-color:#0066ff;
+color:var(--primary);
 margin-top:15px;
 }
 
 button{
-background:#0066ff;
+background:var(--primary);
 color:white;
 border:none;
 padding:12px;
@@ -80,6 +141,7 @@ width:100%;
 border-radius:8px;
 cursor:pointer;
 margin-top:15px;
+font-weight:600;
 }
 
 </style>
@@ -89,18 +151,21 @@ margin-top:15px;
 
 <nav>
 <div class="logo">Pramesthi Tour & Travel</div>
+
 <ul>
 <li><a onclick="showPage('tentang')">Tentang</a></li>
 <li><a onclick="showPage('paket')">Paket Wisata</a></li>
 <li><a onclick="showPage('kontak')">Kontak</a></li>
 </ul>
+
+<div class="toggle" onclick="toggleMode()">🌙 Mode</div>
 </nav>
 
 <!-- TENTANG -->
 <section id="tentang" class="page active">
 <h1>Tentang Kami</h1>
 <p style="margin-top:20px;max-width:700px;">
-Pramesthi Tour & Travel menyediakan paket wisata terbaik dengan sistem booking profesional seperti travel besar.
+Pramesthi Tour & Travel menyediakan paket wisata profesional dengan sistem booking modern seperti platform travel besar.
 </p>
 </section>
 
@@ -119,22 +184,24 @@ Pramesthi Tour & Travel menyediakan paket wisata terbaik dengan sistem booking p
 
 <div class="form-group">
 <label>Durasi</label>
-<select id="durasi">
-<option value="1500000">3 Hari 2 Malam</option>
-<option value="1000000">2 Hari 1 Malam</option>
+<select id="durasi" onchange="hitungTotal()">
+<option value="1500000">3 Hari 2 Malam - Rp 1.500.000</option>
+<option value="1000000">2 Hari 1 Malam - Rp 1.000.000</option>
 </select>
 </div>
 
 <div class="form-group">
 <label>Jumlah Peserta (Dewasa)</label>
-<input type="number" id="peserta" value="1" min="1">
+<input type="number" id="peserta" value="1" min="1" onchange="hitungTotal()">
 </div>
 
 <div class="total">
-Total Harga: Rp <span id="totalHarga">1500000</span>
+Total Harga: Rp <span id="totalHarga">1.500.000</span>
 </div>
 
-<button onclick="hitungTotal()">Pesan Sekarang</button>
+<button onclick="alert('Booking berhasil dikirim!')">
+Pesan Sekarang
+</button>
 
 </div>
 </section>
@@ -159,7 +226,11 @@ function hitungTotal(){
 let harga = parseInt(document.getElementById("durasi").value);
 let peserta = parseInt(document.getElementById("peserta").value);
 let total = harga * peserta;
-document.getElementById("totalHarga").innerText = total.toLocaleString();
+document.getElementById("totalHarga").innerText = total.toLocaleString('id-ID');
+}
+
+function toggleMode(){
+document.body.classList.toggle("dark");
 }
 </script>
 
