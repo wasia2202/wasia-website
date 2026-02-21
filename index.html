@@ -1,148 +1,311 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Website Wasia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pramesthi Tour & Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: white;
-            text-align: center;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:#f4f7fb;color:#333;}
 
-        nav {
-            background-color: #111;
-            padding: 15px;
-            position: sticky;
-            top: 0;
-        }
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:20px 8%;
+transition:0.4s;
+z-index:1000;
+}
 
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+nav.scrolled{
+background:white;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+padding:15px 8%;
+}
 
-        nav a:hover {
-            color: cyan;
-        }
+.logo{
+font-weight:700;
+font-size:1.3rem;
+color:white;
+transition:0.3s;
+}
 
-        header {
-            padding: 60px;
-        }
+nav.scrolled .logo{
+color:#0066ff;
+}
 
-        section {
-            padding: 40px;
-            margin: 20px;
-            background-color: #1a1a1a;
-            border-radius: 10px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards;
-        }
-        .profile {
-            widtha: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 3px solid cyan;
-        }
-        .project-card {
-            background-color: #222;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        .project-card:hover {
-            transform: scale:(1.05);
-        }
-        .contact-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: cyan;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: 0.3s ease;
-        }
-        .contact-btn:hover {
-            background-color: white;
-            transform: scale(1.1);
-        }
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #111;
-            font-size: 14px;
-            opacity: 0.7;
-        }
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.nav-center{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+.nav-center ul{
+display:flex;
+gap:40px;
+list-style:none;
+}
+
+.nav-center a{
+text-decoration:none;
+color:white;
+font-weight:500;
+position:relative;
+transition:0.3s;
+}
+
+nav.scrolled .nav-center a{
+color:#333;
+}
+
+/* Underline Animation */
+.nav-center a::after{
+content:'';
+position:absolute;
+bottom:-5px;
+left:0;
+width:0%;
+height:2px;
+background:#0066ff;
+transition:0.3s;
+}
+
+.nav-center a:hover::after{
+width:100%;
+}
+
+.search-icon{
+cursor:pointer;
+color:white;
+transition:0.3s;
+}
+
+nav.scrolled .search-icon{
+color:#333;
+}
+
+.search-icon svg{
+width:22px;
+height:22px;
+}
+
+/* Hamburger */
+.hamburger{
+display:none;
+flex-direction:column;
+cursor:pointer;
+gap:5px;
+}
+
+.hamburger div{
+width:25px;
+height:3px;
+background:white;
+transition:0.3s;
+}
+
+nav.scrolled .hamburger div{
+background:#333;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:20px;
+animation:fadeUp 1.5s ease;
+}
+
+.search-box{
+display:flex;
+background:white;
+border-radius:50px;
+padding:8px 15px;
+max-width:500px;
+margin:auto;
+}
+
+.search-box input{
+border:none;
+outline:none;
+flex:1;
+padding:10px;
+}
+
+.search-box button{
+border:none;
+background:#0066ff;
+color:white;
+padding:10px 20px;
+border-radius:30px;
+cursor:pointer;
+}
+
+/* SECTION */
+section{
+padding:100px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:2rem;
+margin-bottom:40px;
+}
+
+/* CONTACT */
+.contact{
+background:#0066ff;
+color:white;
+text-align:center;
+padding:60px 20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.nav-center{
+position:fixed;
+top:80px;
+left:-100%;
+width:100%;
+background:white;
+height:calc(100vh - 80px);
+display:flex;
+justify-content:center;
+align-items:center;
+transition:0.4s;
+}
+
+.nav-center.active{
+left:0;
+}
+
+.nav-center ul{
+flex-direction:column;
+gap:30px;
+}
+
+.nav-center a{
+color:#333;
+font-size:1.2rem;
+}
+
+.hamburger{
+display:flex;
+}
+
+.search-icon{
+display:none;
+}
+
+.logo{
+color:white;
+}
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
 </head>
 
 <body>
 
-    <nav>
-        <a href="#tentang">Tentang</a>
-        <a href="#tujuan">Tujuan</a>
-    </nav>
+<nav id="navbar">
+<div class="logo">Pramesthi Tour & Travel</div>
 
-    <header>
-        <img src="animek.jpg" class="profile">
-        <h1>wasia</h1>
-        <p>Calon Web Developer</p>
-    </header>
+<div class="nav-center" id="navMenu">
+<ul>
+<li><a href="#tentang">Tentang</a></li>
+<li><a href="#destinasi">Destinasi</a></li>
+<li><a href="#contact">Kontak</a></li>
+</ul>
+</div>
 
-    <section id="tentang">
-        <h2>Tentang Saya</h2>
-        <p>Saya sedang belajar coding.</p>
-    </section>
+<div style="display:flex;align-items:center;gap:20px;">
+<div class="search-icon" onclick="focusSearch()">
+<svg fill="currentColor" viewBox="0 0 24 24">
+<path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
+</svg>
+</div>
 
-    <section id="tujuan">
-        <h2>Tujuan Saya</h2>
-        <p>Menjadi developer handal</p>
-        
-    <section id="project">
-        <h2>project saya</h2>
-        <div class="project-card">
-            <h3>website pertama saya</h3>
-            <p>website portofolio yang saya buat sendiri dari nol menggunakan HTML, CSS, dan JavaScript.<p>
-        </div>
-    </section>
-        
-    <section id="contact">
-        <h2>Kontak Saya</h2>
-        <a href="mailto:Wasiaa2202@gmail.com" class="contact-btn">Hubungi Saya</a>
-    </section>
+<div class="hamburger" onclick="toggleMenu()">
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
 
-    <footer>
-        <p>© 2026 Wasia2202 | Built with passion and consistency</p>
-    </footer>
+</nav>
+
+<section class="hero">
+<div>
+<h1>Jelajahi Dunia Bersama Kami 🌍</h1>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Cari paket wisata...">
+<button>Cari</button>
+</div>
+</div>
+</section>
+
+<section id="tentang">
+<h2 class="section-title">Tentang Kami</h2>
+<p style="text-align:center;max-width:700px;margin:auto;">
+Pramesthi Tour & Travel adalah layanan perjalanan profesional yang menyediakan paket wisata domestik dan internasional dengan pelayanan terbaik dan harga kompetitif.
+</p>
+</section>
+
+<section id="destinasi">
+<h2 class="section-title">Destinasi Populer</h2>
+<p style="text-align:center;">Bandung • Jakarta • Bali • Tokyo • Seoul</p>
+</section>
+
+<section class="contact" id="contact">
+<h2>Hubungi Kami</h2>
+<p>Email: pramesthitour@gmail.com</p>
+<p>Instagram: @pramesthitour</p>
+<p>Facebook: Pramesthi Tour & Travel</p>
+<p>WhatsApp: 081234567890</p>
+</section>
+
+<script>
+/* Navbar Scroll Effect */
+window.addEventListener("scroll",function(){
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+
+/* Focus Search */
+function focusSearch(){
+document.getElementById("searchInput").focus();
+}
+
+/* Toggle Mobile Menu */
+function toggleMenu(){
+document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
